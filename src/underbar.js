@@ -108,26 +108,31 @@
     if (iterator !== undefined){
       for (var i = 0; i<array.length; i++){
         if( !seen.includes(iterator(array[i]))){
-          seen.push(iterator(array[i]))
-          result.push(array[i])
+          seen.push(iterator(array[i]));
+          result.push(array[i]);
         }
       }
     } else {
-    for (var i = 0; i <array.length; i++){
-      if (!result.includes(array[i])){
-        result.push(array[i]);
+      for (var i = 0; i <array.length; i++){
+        if (!result.includes(array[i])){
+          result.push(array[i]);
+        }
       }
     }
-  }
     return result;
   };
 
 
   // Return the results of applying an iterator to each element.
-  _.map = function(collection, iterator) {
-    // map() is a useful primitive iteration function that works a lot
+  // map() is a useful primitive iteration function that works a lot
     // like each(), but in addition to running the operation on all
     // the members, it also maintains an array of results.
+  _.map = function(collection, iterator) {
+    var result = [];
+    for (var i = 0; i < collection.length; i++){
+      result.push(iterator(collection[i]))
+    }
+    return result;
   };
 
   /*

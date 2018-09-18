@@ -174,13 +174,16 @@
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
   _.reduce = function(collection, iterator, accumulator) {
+    var startIndex;
     if (accumulator === undefined ){
       accumulator = collection[0]
+      startIndex = 1;
     } else {
       accumulator = accumulator 
+      startIndex = 0;
     }
-    var startIndex = accumulator === undefined ? 1 : 0
-    for (var i = 0; i < collection.length; i++){
+
+    for (var i = startIndex; i < collection.length; i++){
       accumulator = iterator(accumulator,collection[i])
     }
     return accumulator;

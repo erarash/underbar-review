@@ -92,7 +92,7 @@
   // copying code in and modifying it
   _.reject = function(collection, test) {
     var result = [];
-    
+
     _.filter(collection, function(value) {
       if(!test(value)) {
         result.push(value);
@@ -103,6 +103,23 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array, isSorted, iterator) {
+    var seen = [];
+    var result = [];
+    if (iterator !== undefined){
+      for (var i = 0; i<array.length; i++){
+        if( !seen.includes(iterator(array[i]))){
+          seen.push(iterator(array[i]))
+          result.push(array[i])
+        }
+      }
+    } else {
+    for (var i = 0; i <array.length; i++){
+      if (!result.includes(array[i])){
+        result.push(array[i]);
+      }
+    }
+  }
+    return result;
   };
 
 

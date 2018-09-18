@@ -182,12 +182,17 @@
       accumulator = accumulator 
       startIndex = 0;
     }
-
-    for (var i = startIndex; i < collection.length; i++){
-      accumulator = iterator(accumulator,collection[i])
+    
+    if(Array.isArray(collection)) {
+      for (var i = startIndex; i < collection.length; i++){
+        accumulator = iterator(accumulator,collection[i]);
+      }
+    } else {
+      for (var key in collection) {
+        accumulator = iterator(accumulator, collection[key]);
+      }  
     }
     return accumulator;
-
   };
 
   // Determine if the array or object contains a given value (using `===`).

@@ -377,9 +377,9 @@
     //make a copy of the array using array.prototype.slice 
     var copyArr = array.slice(0);
     //we can use math.random()
-    var randomIndex = Math.floor(Math.random() * array.length);
     //loop through the new array, 
     for (var i = 0; i < array.length; i++) {
+      var randomIndex = Math.floor(Math.random() * copyArr.length);
       result.push(copyArr[randomIndex])
       
       copyArr.splice(randomIndex, 1);

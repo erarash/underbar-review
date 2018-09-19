@@ -373,7 +373,34 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
-  };
+    var result = []
+    //make a copy of the array using array.prototype.slice 
+    var copyArr = array.slice(0);
+    //we can use math.random()
+    var randomIndex = Math.floor(Math.random() * array.length);
+    //loop through the new array, 
+    for (var i = 0; i < array.length; i++) {
+      result.push(copyArr[randomIndex])
+      
+      copyArr.splice(randomIndex, 1);
+    }
+    return result;
+
+/*
+1. Declare an empty array to hold the result.
+We will loop through the original array
+And push value to new empty array using Math.random().
+ >> newArr.push(array[Math.random()]); 
+Math.floor(Math.random() * Math.floor(array.length))
+
+2. Make a copy and just modify the copy w/o declaring another empty array.
+Maybe we can use splice? OR there might be another way.
+result.splice(i, 1, array[Math.floor(Math.random() * Math.floor(array.length))])
+
+array[math.random()] = random value
+ 
+*/
+};
 
 
   /**
